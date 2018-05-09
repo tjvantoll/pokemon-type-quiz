@@ -16,9 +16,13 @@ body {
   color: white;
 }
 .action-bar h1 {
-  margin: 0;
-  padding: 1rem;
+  margin: 0 0 0 0.5rem;
+  padding: 1rem 1rem 1rem 2.75rem;
   font-weight: normal;
+  background-image: url("Pokeball.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: center left;
 }
 
 .container {

@@ -24,7 +24,7 @@
     <button data-answer="0" [class]="determineButtonClass(0)" [disabled]="uiDisabled">
       0x
     </button>
-    <button data-answer="0.25" [class]="determineButtonClass(0.25)" [disabled]="uiDisabled">
+    <button data-answer="0.25" [class]="determineButtonClass(0.25)" [disabled]="uiDisabled" [hidden]="!dualTypeQuestion">
       0.25x
     </button>
     <button data-answer="0.5" [class]="determineButtonClass(0.5)" [disabled]="uiDisabled">
@@ -38,7 +38,7 @@
     <button data-answer="2" [class]="determineButtonClass(2)" [disabled]="uiDisabled">
       2x
     </button>
-    <button data-answer="4" [class]="determineButtonClass(4)" [disabled]="uiDisabled">
+    <button data-answer="4" [class]="determineButtonClass(4)" [disabled]="uiDisabled" [hidden]="!dualTypeQuestion">
       4x
     </button>
   </div>
