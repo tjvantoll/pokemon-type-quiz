@@ -1,20 +1,51 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="action-bar">
+  <h1>Pokémon Type Quiz</h1>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<div class="container">
+  <p class="instructions">
+    How effective is a 
+    <span [style.backgroundColor]="attackType.backgroundColor" [style.color]="attackType.color">
+      {{ attackType.name }}
+    </span>
+    move against a
+
+    <span [style.backgroundColor]="defenseType1.backgroundColor" [style.color]="defenseType1.color">
+      {{ defenseType1.name }}
+    </span>
+
+    <span class="secondType" *ngIf="dualTypeQuestion" [style.backgroundColor]="defenseType2.backgroundColor" [style.color]="defenseType2.color">
+      {{ defenseType2.name }}
+    </span>
+    Pokémon?
+  </p>
+
+  <div (click)="checkAnswer($event)" class="button-container">
+    <button data-answer="0" [class]="determineButtonClass(0)" [disabled]="uiDisabled">
+      0x
+    </button>
+    <button data-answer="0.25" [class]="determineButtonClass(0.25)" [disabled]="uiDisabled">
+      0.25x
+    </button>
+    <button data-answer="0.5" [class]="determineButtonClass(0.5)" [disabled]="uiDisabled">
+      0.5x
+    </button>
+  </div>
+  <div (click)="checkAnswer($event)" class="button-container">
+    <button data-answer="1" [class]="determineButtonClass(1)" [disabled]="uiDisabled">
+      1x
+    </button>
+    <button data-answer="2" [class]="determineButtonClass(2)" [disabled]="uiDisabled">
+      2x
+    </button>
+    <button data-answer="4" [class]="determineButtonClass(4)" [disabled]="uiDisabled">
+      4x
+    </button>
+  </div>
+
+  <p class="message">{{ message }}</p>
+</div>
+
+<div class="streak">
+  Current streak: {{ streak }}
+</div>
