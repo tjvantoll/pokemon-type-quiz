@@ -31,6 +31,10 @@ export class AppComponent implements OnInit {
   }
 
   checkAnswer(args) {
+    if (this.uiDisabled) {
+      return;
+    }
+
     this.userAnswer = parseFloat(args.target.getAttribute("data-answer"));
 
     var attackIndex = Data.types.indexOf(this.attackType);
