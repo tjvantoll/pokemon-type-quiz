@@ -39,13 +39,35 @@ export class AppComponent implements OnInit {
 
     var attackIndex = Data.types.indexOf(this.attackType);
     var defense1Index = Data.types.indexOf(this.defenseType1);
+    var defense1Answer = Data.effectiveness[(attackIndex * Data.types.length) + defense1Index];
+    var defense2Answer;
 
-    this.correctAnswer = Data.effectiveness[(attackIndex * Data.types.length) + defense1Index];
+    this.correctAnswer = defense1Answer;
 
     if (this.dualTypeQuestion) {
       var defense2Index = Data.types.indexOf(this.defenseType2);
-      this.correctAnswer = this.correctAnswer *
-        Data.effectiveness[(attackIndex * Data.types.length) + defense2Index];
+      defense2Answer = Data.effectiveness[(attackIndex * Data.types.length) + defense2Index];
+      this.correctAnswer = this.correctAnswer * defense2Answer;
+    }
+
+    // GO conversion
+    if (this.correctAnswer == 0) {
+      this.correctAnswer = 0.39;
+
+      // Account for resistance & immunity
+      if (this.dualTypeQuestion) {
+        if ((defense1Answer == 0 && defense2Answer == 0.5) || (defense1Answer == 0.5 && defense2Answer == 0)) {
+          this.correctAnswer = 0.24;
+        }
+      }
+    } else if (this.correctAnswer == 0.25) {
+      this.correctAnswer = 0.39;
+    } else if (this.correctAnswer == 0.5) {
+      this.correctAnswer = 0.625;
+    } else if (this.correctAnswer == 2) {
+      this.correctAnswer = 1.6;
+    } else if (this.correctAnswer == 4) {
+      this.correctAnswer = 2.56;
     }
 
     if (this.userAnswer === this.correctAnswer) {

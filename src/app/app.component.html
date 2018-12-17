@@ -21,25 +21,25 @@
   </p>
 
   <div (click)="checkAnswer($event)" class="button-container">
-    <button data-answer="0" [class]="determineButtonClass(0)" [disabled]="uiDisabled">
-      0x
+    <button data-answer="0.24" [class]="determineButtonClass(0.24)" [disabled]="uiDisabled" [hidden]="!dualTypeQuestion">
+      Not Very & Immunity (24%)
     </button>
-    <button data-answer="0.25" [class]="determineButtonClass(0.25)" [disabled]="uiDisabled" [hidden]="!dualTypeQuestion">
-      0.25x
+    <button data-answer="0.39" [class]="determineButtonClass(0.39)" [disabled]="uiDisabled">
+      {{ dualTypeQuestion ? 'Not Very 2x (39%)' : 'Immunity (39%)' }}
     </button>
-    <button data-answer="0.5" [class]="determineButtonClass(0.5)" [disabled]="uiDisabled">
-      0.5x
+    <button data-answer="0.625" [class]="determineButtonClass(0.625)" [disabled]="uiDisabled">
+      Not Very (62.5%)
     </button>
   </div>
   <div (click)="checkAnswer($event)" class="button-container">
     <button data-answer="1" [class]="determineButtonClass(1)" [disabled]="uiDisabled">
-      1x
+      Normal (100%)
     </button>
-    <button data-answer="2" [class]="determineButtonClass(2)" [disabled]="uiDisabled">
-      2x
+    <button data-answer="1.6" [class]="determineButtonClass(1.6)" [disabled]="uiDisabled">
+      Super (160%)
     </button>
-    <button data-answer="4" [class]="determineButtonClass(4)" [disabled]="uiDisabled" [hidden]="!dualTypeQuestion">
-      4x
+    <button data-answer="2.56" [class]="determineButtonClass(2.56)" [disabled]="uiDisabled" [hidden]="!dualTypeQuestion">
+      Super 2x (256%)
     </button>
   </div>
 
